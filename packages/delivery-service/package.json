@@ -1,0 +1,26 @@
+{
+  "name": "delivery-service",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "vanshpatelx <vanshpatel1299@gmail.com>",
+  "homepage": "https://github.com/vanshpatelx/Food-Delivery-System#readme",
+  "license": "ISC",
+  "main": "lib/delivery-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanshpatelx/Food-Delivery-System.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/delivery-service.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/vanshpatelx/Food-Delivery-System/issues"
+  }
+}

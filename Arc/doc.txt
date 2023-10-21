@@ -1,0 +1,130 @@
+TechStack:
+Frontend  <-> Reverse Proxy <-> Backend Microservice
+
+Frontend
+- User App -> Next.Js
+- Restaurant -> ElectronJS
+- Delivery -> React Native
+- Admin -> ReactJs
+
+Proxy
+    NGiNX
+
+Backend
+    Auth -> Nest.js
+    Restaurant -> Nest.js
+    Order -> Golang
+    Payment -> NodeJS
+    User -> NodeJS
+
+Search Engine:
+    Elastic Search
+
+Commuication:
+    RabbitMQ
+    Apache Kafka
+
+External APIs
+1. SMS and Notifications APIs -> Twillo
+2. Mapping and GeoLocation -> Google
+3. Payment Gateway -> RazorPay
+
+Docker,
+CI / CD
+AWS
+
+
+Features
+Init
+1. Auth - Login/SignUp, OTP Verifictaion, Reset password, Forget password
+2. User - Search Food, Also by Restaurant, Fillter (FE), Order Food, Check Status, Multiple Addresses, Scheduled Delivery
+3. Restaurant - CRUD Menu or Product, Dashboard Order, Order Status, Opening/Closing Hours
+4. Delivery - CRUD Status Delivery
+-> Photos Upload for Food - Multer
+-> Rating
+-> Payment Gateway Integration
+-> Generating code for Order to stick on Packege, and for Verify have QR Scanner in Delivery App
+-> Location for Ordering Food
+-> Check how to stream just amount of data for Loading lots of food items
+-> Notifications - Twillo
+
+
+
+More Features
+User Features:
+1. Favorites and Reorder: Allow users to mark certain dishes/restaurants as favorites and quickly reorder from their order history.
+2. Multiple Addresses: Users should be able to save multiple delivery addresses for convenience.
+3. Scheduled Delivery: Let users schedule food deliveries for a later time or date.
+4. Special Instructions: Allow users to add special instructions for food preparation or delivery.
+5. Real-time Tracking: Implement real-time order tracking using GPS, so users can track the delivery in real-time on a map.
+6. Multiple Payment Methods: Support various payment options including credit/debit cards, digital wallets, and cash on delivery.
+7. Referral System: Offer referral bonuses to users who invite others to use the app.
+8. User Reviews and Ratings: Enable users to leave reviews and ratings for both restaurants and delivery drivers.
+
+Restaurant Features:
+1. Inventory Management: Notify restaurants when certain items are running low or out of stock.
+2. Promotions and Discounts: Allow restaurants to offer special discounts or promotions during specific times.
+3. Opening/Closing Hours: Display the restaurant's operating hours and indicate whether it’s currently open or closed.
+4. Table Reservation: If the restaurant offers dine-in services, integrate a table reservation system.
+
+Delivery Driver Features:
+1. Accept/Reject Orders: Drivers should have the option to accept or reject incoming delivery requests.
+2. Navigation: Provide built-in navigation to the delivery address to help drivers find the location easily.
+3. Earnings Tracker: Show drivers their earnings, including tips and bonuses.
+4. Driver Ratings: Allow customers to rate delivery drivers based on their service.
+
+Admin Features:
+1. Dashboard: A comprehensive admin dashboard to manage users, restaurants, orders, and deliveries.
+2. Analytics: Utilize data analytics to gain insights into user behavior, popular dishes, delivery routes, etc.
+3. Report and Flagging: Allow users to report issues and inappropriate content. Admins should be able to manage these reports.
+4. Content Management System (CMS): An admin panel to manage app content such as banners, promotions, and featured restaurants.
+
+
+
+User
+-> Login
+-> Search
+-> Restaurant List
+-> Click on Product
+-> Quantity, Spcial Note
+-> Checkout
+-> Payment
+-> Done
+-> Notifications to restaurant
+-> Accept by restaurant & delivery
+-> Notify to delivery before 5 mins to pickup
+-> pickup
+-> Delivered
+
+
+
+Restaurant Microservice
+1. Menu Model
+-> Name (String)
+-> Array [Items]
+-> Veg or NonVeg (options)
+-> Descrption - String
+-> Photo (url)
+
+2. Items
+-> Name (String)
+-> Ingredients - (Array)
+-> Veg or NonVeg (options)
+-> Descrption - String
+-> Photo - (Url)
+-> Price
+
+
+
+Order Microservice
+1. Orders Model
+-> UserId
+-> RestaurantId
+-> DeliveryAddress
+-> Order Details
+    -> ItemId
+    -> Quantity
+    -> Price
+-> DeliveryId
+-> Status
+-> Delivery Instructions

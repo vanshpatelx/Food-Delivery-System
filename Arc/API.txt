@@ -1,0 +1,160 @@
+Models + API Design
+
+
+Auth -> Nest.js
+Restaurant -> Nest.js
+Order -> Golang
+Payment -> NodeJS
+User -> NodeJS
+
+
+Auth Microservice
+1. Auth Model
+-> AuthId
+-> Email (String)
+-> password (Encrypted String)
+-> Role (Enum - String)
+
+User Microservice
+1. User Model
+-> Name (Object)
+-> Addresses (Object)
+-> DOB
+-> Contact (Object)
+
+2. Restaurant Model
+-> Name (Object)
+-> Addresses (Object)
+-> Times-Opening-Closing 
+-> Photo - (url)
+-> Cuisine Type - Array
+-> Contact (Object)
+
+3. DeliveryBoy Model
+-> Name (Object)
+-> Addresses (Object)
+-> Contact (Object)
+
+4. Admin
+
+
+Restaurant Microservice
+1. Menu Model
+-> Name (String)
+-> Array [Items]
+-> Veg or NonVeg (options)
+-> Descrption - String
+-> Photo (url)
+
+2. Items
+-> Name (String)
+-> Ingredients - (Array)
+-> Veg or NonVeg (options)
+-> Descrption - String
+-> Photo - (Url)
+-> Price
+
+Order Microservice
+1. Orders Model
+-> user
+-> Restaurant
+-> DeliveryAddress
+-> Order Details
+    -> ItemId
+    -> Quantity
+    -> Price
+-> DeliveryId
+-> Status
+-> Delivery Instructions
+
+Payment Microservice
+1. Payment
+-> OrderId
+-> Payment option
+-> Gateway Reference
+
+
+
+Auth -> Nest.js
+Restaurant -> Nest.js
+Order -> Golang
+Payment -> NodeJS
+User -> NodeJS
+
+
+API Design
+
+Auth
+1. Register User - POST /api/v1/register
+2. login User - POST /api/v1/login
+3. OTP Verifictaion
+4. Reset password
+5. Forget password
+
+User -> Access : AuthId
+1. Create User - POST /api/v1/user/:AuthId
+2. Create Restaurant - POST /api/v1/user/:AuthId
+3. Create DeliverBoy - POST /api/v1/user/:AuthId
+4. Get All User - GET /api/v1/user/users
+5. Get All Restaurant - GET /api/v1/user/Restaurants
+6. Get All DeliverBoy - GET /api/v1/user/DeliverBoy
+7. Get specific User - GET /api/v1/user/:userId
+8. Get specific Restaurant - GET /api/v1/user/:RestaurantId
+9. Get specific DeliverBoy - GET /api/v1/user/:DeliveryId
+
+
+Restaurant -> Access : RestaurantId
+1. Adding Menu - POST /api/v1/menu/:RestaurantId
+2. Adding Items - POST /api/v1/items/:MenuId
+3. getting Menu - GET /api/v1/menu/:RestaurantId
+4. getting Items - GET /api/v1/items/:MenuId
+
+Order -> Access : UserId or RestaurantId or DeliveryId
+1. Adding Order - POST /api/v1/order/:userId
+2. Order Status - GET /api/v1/order/:OrderId
+
+
+
+
+API Design
+
+Auth
+1. Register User - POST /api/v1/register
+2. login User - POST /api/v1/login
+3. OTP Verifictaion
+4. Reset password
+5. Forget passwordz
+
+User
+1. Create User - POST /api/v1/user  => AuthId
+2. Get User - GET /api/v1/user  => UserId
+3. Replace UserDetails - PATCH /api/v1/user => RestaurantId
+ 
+Restaurant
+1. Create Restaurant - POST /api/v1/restaurant  => AuthId
+2. Get Restaurant - GET /api/v1/restaurant  => RestaurantId
+3. Replace RestaurantDetails - PATCH /api/v1/restaurant => RestaurantId
+-- Menu
+1. Create Menu - POST /api/v1/restaurant/menu => RestaurantId
+2. Create Item - POST /api/v1/restaurant/menu/item => RestaurantId, MenuId
+3. Get Menu - GET /api/v1/restaurant/menu => MenuId
+4. Get Item - GET /api/v1/restaurant/menu/item => ItemId
+5. Update Menu - PATCH /api/v1/restaurant/menu/  => MenuId
+6. Update Item - PATCH /api/v1/restaurant/menu/item/ => ItemId
+
+-- Features Related
+1. Get all Items - GET /api/v1/restaurant/Items
+2. Get all Menus - GET /api/v1/restaurant/Menus 
+
+Delivery
+1. Create DeliveryBoy - POST /api/v1/delivery  => AuthId
+2. Get DeliveryBoy - GET /api/v1/delivery  => DeliveryId
+3. Replace DeliveryBoy - PATCH /api/v1/delivery => DeliveryId
+4. status to check driver is avalible to pickup
+
+Order
+1. Create Order - POST /api/v1/order => RestaurantId, UserId
+2. Order status - GET /api/v1/order => OrderId
+3. Order Update - PATCH /api/v1/order => OrderId
+
+Payment
